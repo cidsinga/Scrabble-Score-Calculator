@@ -51,27 +51,46 @@ class Word
     @input
   end
 
-  def scrabble_calc
-    loop = @input.length
-    points = 0
-    loop.times do |i|
-      if @input[i] == "A" || @input[i] == "E" || @input[i] =="I" || @input[i] =="O" || @input[i] =="U" || @input[i] =="L" || @input[i] == "R" || @input[i] == "S" || @input[i] =="N" || @input[i] == "T"
-        points = points + 1
-      elsif @input[i] == "D" || @input[i] == "G"
-        points = points + 2
-      elsif @input[i] == "B" || @input[i] == "C" || @input[i] =="M" || @input[i] =="P"
-        points = points + 3
-      elsif @input[i] == "F" || @input[i] == "H" || @input[i] =="V" || @input[i] =="W" || @input[i] =="Y"
-        points = points + 4
-      elsif @input[i] == "K"
-        points += 5
-      elsif @input[i] == "J" || @input[i] == "X"
-        points += 8
-      elsif @input[i] == "Q" || @input[i] == "Z"
-        points += 10
-      end
-    end
-    points
-
+  def scrab_score
+    @input.scan(/[aeioulrsnt]/i).length +
+    (@input.scan(/[dg]/i).length * 2) +
+    (@input.scan(/[bcmp]/i).length * 3) +
+    (@input.scan(/[fhvwy]/i).length * 4) +
+    (@input.scan(/[k]/i).length * 5) +
+    (@input.scan(/[jx]/i).length * 8) +
+    (@input.scan(/[qz]/i).length * 10)
   end
 end
+
+# class Word
+#   def initialize(input)
+#     @input = input
+#   end
+#   def input
+#     @input
+#   end
+#
+#   def scrabble_calc
+#     loop = @input.length
+#     points = 0
+#     loop.times do |i|
+#       if @input[i] == "A" || @input[i] == "E" || @input[i] =="I" || @input[i] =="O" || @input[i] =="U" || @input[i] =="L" || @input[i] == "R" || @input[i] == "S" || @input[i] =="N" || @input[i] == "T"
+#         points = points + 1
+#       elsif @input[i] == "D" || @input[i] == "G"
+#         points = points + 2
+#       elsif @input[i] == "B" || @input[i] == "C" || @input[i] =="M" || @input[i] =="P"
+#         points = points + 3
+#       elsif @input[i] == "F" || @input[i] == "H" || @input[i] =="V" || @input[i] =="W" || @input[i] =="Y"
+#         points = points + 4
+#       elsif @input[i] == "K"
+#         points += 5
+#       elsif @input[i] == "J" || @input[i] == "X"
+#         points += 8
+#       elsif @input[i] == "Q" || @input[i] == "Z"
+#         points += 10
+#       end
+#     end
+#     points
+#
+#   end
+# end

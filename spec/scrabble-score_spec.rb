@@ -20,6 +20,6 @@ require('scrabble-score')
 
 describe('Word#scrabble_calc') do
   it('should increment points up by 1 for each letter ') do
-    expect(word.scrabble_calc()).to(eq(8))
+    expect(word.scrab_score()).to(eq(9))
   end
 end
